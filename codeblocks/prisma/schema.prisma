@@ -20,4 +20,5 @@ model User {
   username String  @unique
   password String
   blocks   Block[]
+  role     String
 }
