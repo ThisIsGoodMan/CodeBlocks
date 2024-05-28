@@ -5,16 +5,22 @@ export default function BlockCreatePage() {
      async function createBlock(formData: FormData) {
         "use server"
         const title= formData.get("title") as string;
-        const code = formData.get("code") as string;
         const content = formData.get("content") as string;
-        // Insert data to database
+        const userId = formData.get("userId") as string;
+        // Insert data to databased
         await db.block.create({
-            data: { title, code, content, user: { connect: { id: userId } } }
+            data: { title, content, user: { connect: { id: parseInt(userId) } } }
         });
-        redirect("/");
+        redirect("blocks");
     }
 
     return (
+    // <form onSubmit={(e) => {
+    //     e.preventDefault(); // Prevent default form submission behavior
+    //     const formData = new FormData(e.target); // Create FormData object from the form
+    //     createBlock(formData); // Call your createBlock function with form data
+    // }}>
+        // Do I need to change this?
         <form action={createBlock}>
             <h3>Create a Block</h3>
             <div className="flex flex-col gap-4">
@@ -27,10 +33,10 @@ export default function BlockCreatePage() {
                 </div>
 
                 <div className="flex gap-4">
-                    <label className="w-12" htmlFor="code">
+                    <label className="w-12" htmlFor="content">
                         Code
                     </label>
-                    <textarea className="border rounded p-2 w-full" name="code" id="code">
+                    <textarea className="border rounded p-2 w-full" name="content" id="content">
                     </textarea>
                 </div>
 

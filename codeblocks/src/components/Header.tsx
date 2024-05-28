@@ -13,6 +13,9 @@ const navLinks = [
     name: "Blocks",
     href: "/blocks",
   },
+  { name: "Create", 
+  href: "/create" 
+  },
   { 
     name: "Contact", 
     href: "/contact" },
@@ -31,7 +34,7 @@ export default function Header() {
       {/* Left Section */}
       <div className="lg:flex flex-col justify-center items-center hidden">
         <Link href="/">
-            <Image src={logo} alt="Logo" width={250} height={250} />
+            <Image src={logo} alt="Logo" width={100} height={100} />
           </Link>
           <DisplayUser />
       </div>
