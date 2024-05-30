@@ -18,12 +18,12 @@ export default async function BlockGrid() {
     <Link
       key={block.id}
       href={`/blocks/${block.id}`}
-      className="flex flex-col justify-between items-center p-2 border-2 rounded h-[400px]">
+      className="flex flex-col justify-between items-center p-2 border-2 rounded h-[400px] overflow-hidden">
       <div className="">
-        <div className="text-l font-bold">
+        <div className="text-l font-bold overflow-hidden text-ellipsis whitespace-nowrap w-full">
           {block.title}
         </div>
-        <div className="text-m">
+        <div className="text-m overflow-hidden text-ellipsis w-full h-full">
           {block.content}
         </div>
       </div>
