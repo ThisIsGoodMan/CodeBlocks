@@ -13,12 +13,13 @@ export async function login(formData: FormData) {
             }
         });
         // Maybe lets use Supabase to handle signups and logins
-        // USer found --> Create session // Remember me TO DO
+        // User found --> Create session // Remember me TO DO
         cookies().set("user_id", String(user.id))
+
+        redirect("/");
+        
     } catch (error) {
         // User not found ---> "User not found message" maybe "Bad user/pass message" TO DO
-        console.log("User not found");
         redirect("/login?error=Invalid%20Credentials");
     }
-    redirect("/");
 }

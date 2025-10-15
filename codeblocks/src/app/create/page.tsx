@@ -1,4 +1,5 @@
 import { db } from "@/db";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export default function BlockCreatePage() {
@@ -14,13 +15,18 @@ export default function BlockCreatePage() {
         redirect("blocks");
     }
 
+    const userId = cookies().get("user_id")?.value;
+    if (!userId) {
+      redirect("/login");
+    }
+
     return (
     // <form onSubmit={(e) => {
     //     e.preventDefault(); // Prevent default form submission behavior
     //     const formData = new FormData(e.target); // Create FormData object from the form
     //     createBlock(formData); // Call your createBlock function with form data
     // }}>
-        // Do I need to change this?
+        // Do I need to change this? ^^
         <form action={createBlock}>
             <h3>Create a Block</h3>
             <div className="flex flex-col gap-4">
